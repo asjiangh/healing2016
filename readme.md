@@ -5,7 +5,7 @@
 - Vue
 
 ## how to start
-1. `composer` is required and if you're in China, you may have to add extra sources like  
+1. `composer` is required and if you're in China, you may have to add extra sources like
 ```
 composer config -g repo.packagist composer https://packagist.phpcomposer.com
 ```
