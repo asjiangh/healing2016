@@ -62,6 +62,19 @@ return [
             'bucket' => 'your-bucket',
         ],
 
+        'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => 'odnarufty.bkt.clouddn.com', //你的七牛域名
+                'https'     => 'dn-yourdomain.qbox.me',         //你的HTTPS域名
+                'custom'    => 'static.abc.com',                //你的自定义域名
+            ],
+            'access_key'=> 'piavjxdkKJu_jv7ZPqbrx77AsWnxSEwAjco_uDv9',  //AccessKey
+            'secret_key'=> '0pu5bfMWFCf0F5I2cfcc31pU0D7D6TaiRtG-iSh4',  //SecretKey
+            'bucket'    => 'healing2016',  //Bucket名字
+            'notify_url'=> '',  //持久化处理回调地址
+        ],
+
     ],
 
 ];
