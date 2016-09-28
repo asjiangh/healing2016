@@ -12,7 +12,11 @@ class JwtController extends Controller
 {
     public function sentToken()
     {
-        $customClaims = session('wechat.oauth_user');
+        $user = session('wechat.oauth_user');
+
+        $customClaims = [
+            $user['id']
+        ];
 
         $payload = JWTFactory::make($customClaims);
 
