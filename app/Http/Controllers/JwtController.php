@@ -15,7 +15,7 @@ class JwtController extends Controller
         $user = session('wechat.oauth_user');
 
         $customClaims = [
-            $user['id']
+            'openid' => $user['id']
         ];
 
         $payload = JWTFactory::make($customClaims);
