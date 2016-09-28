@@ -22,6 +22,6 @@ class JwtController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
-        return view('token', compact('token'));
+        return view('token', compact('token', 'customClaims'));
     }
 }

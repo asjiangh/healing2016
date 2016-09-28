@@ -10,6 +10,8 @@
 <body>
 <p>Your Token:</p>
 <p>{{ $token }}</p>
+<p>Your session</p>
+<p>{{ $customClaims }}</p>
 <script>
     window.localStorage.healing2016_token = '{{ $token }}';
     setTimeout(function () {
