@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTFactory;
 
 class JwtController extends Controller
 {
-    public function sentCookie()
+    public function sentToken()
     {
         $customClaims = session('wechat.oauth_user');
 
