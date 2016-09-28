@@ -6,19 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Facades\JWTFactory;
 
 class JwtController extends Controller
 {
     public function sentToken()
     {
-        $user = session('wechat.oauth_user');
+        $openid = session('wechat.oauth_user')['id'];
 
-        $customClaims = [
-            'openid' => $user['id']
-        ];
-
-        $payload = JWTFactory::make($customClaims);
+        $payload = JWTFactory::sub($openid)->make();
 
         try {
             $token = JWTAuth::encode($payload);
@@ -26,6 +23,6 @@ class JwtController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
-        return view('token', compact('token', 'customClaims'));
+        return view('token', compact('token'));
     }
 }
