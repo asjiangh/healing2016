@@ -14,5 +14,12 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+//    return $request->user();
+    return array_map('trim', explode(',', env('WECHAT_OAUTH_SCOPES', 'snsapi_userinfo')));
+})->middleware('api');
+
+Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('test', function () {
+        return 'papapa';
+    });
+});

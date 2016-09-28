@@ -167,6 +167,8 @@ return [
          * Package Service Providers...
          */
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        Overtrue\LaravelWechat\ServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         //
 
         /*
