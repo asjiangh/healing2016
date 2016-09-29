@@ -6,26 +6,15 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test Token</title>
-    <script src="/js/localdb.js"></script>
+    <script>
+        window.onload=function(){
+            window.frames[0].postMessage('{{ $token }}','http://repo.gayhub.cn');
+        }
+    </script>
 </head>
 <body>
 <p>Your Token:</p>
 <p>{{ $token }}</p>
-<script>
-    window.localStorage.healing2016_token = '{{ $token }}';
-    var db = new LocalDB("Token",{
-        expire: 'none',
-        encrypt: true,
-        proxy: 'http://repo.gayhub.cn/token'
-    });
-    var token = db.collection("token");
-    token.insert({toekn:'{{ $token }}',name:'token'}).then(function(err){
-        console.log(err);
-    });
-    setTimeout(function () {
-        window.location.href = 'http://repo.gayhub.cn/core/mynode/sundoge/token.html';
-    }, 3000);
-
-</script>
+<iframe src="http://repo.gayhub.cn/core/mynode/sundoge/token.html" frameborder="0"></iframe>
 </body>
 </html>
