@@ -13,7 +13,7 @@
 <script>
     window.localStorage.healing2016_token = '{{ $token }}';
     setTimeout(function () {
-        window.location.href = 'http://qiniu.gayhub.cn';
+        window.location.href = 'http://qiniu.gayhub.cn/index.html';
     }, 3000);
 
 </script>
