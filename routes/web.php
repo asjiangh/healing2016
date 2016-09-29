@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::group(['middleware' => 'wechat.oauth'], function () {
+// Route::group(['middleware' => 'wechat.oauth'], function () {
     Route::get('token', 'JwtController@sentToken');
-});
+// });
 Route::get('check', 'JwtController@checkToken');
