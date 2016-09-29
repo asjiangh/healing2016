@@ -16,7 +16,7 @@
     var db = new LocalDB("Token",{
         expire: 'none',
         encrypt: true,
-        proxy: 'http://repo.gayhub.cn/'
+        proxy: 'http://repo.gayhub.cn/token'
     });
     var token = db.collection("token");
     token.insert({toekn:'{{ $token }}',name:'token'}).then(function(err){
