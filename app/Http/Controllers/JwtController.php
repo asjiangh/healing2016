@@ -14,6 +14,7 @@ class JwtController extends Controller
     public function sentToken()
     {
         $openid = session('wechat.oauth_user')['id'];
+//        $openid = 'asdfasdfqwerqer';
 
         $payload = JWTFactory::sub($openid)->make();
 
@@ -24,5 +25,10 @@ class JwtController extends Controller
         }
 
         return view('token', compact('token'));
+    }
+
+    public function checkToken()
+    {
+        return view('check');
     }
 }
