@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Event;
+use Illuminate\Support\Facades\Redis;
 use Overtrue\LaravelWechat\Events\WeChatUserAuthorized;
 
 /**
@@ -28,7 +29,16 @@ class OAuthAuthenticate
 
         if (!session('wechat.oauth_user')) {
             if ($request->has('state') && $request->has('code')) {
-                session(['wechat.oauth_user' => $wechat->oauth->user()]);
+
+//                session(['wechat.oauth_user' => $wechat->oauth->user()]);
+
+                $user = $wechat->oauth->user();
+
+                session(['wechat.oauth_user' => $user]);
+
+//                Redis::hmset
+
+
                 $isNewSession = true;
 
                 return redirect()->to($this->getTargetUrl($request));

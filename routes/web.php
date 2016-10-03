@@ -15,7 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+
+// Get user info.
+Route::get('user-info', 'HomeController@userInfo')->middleware('wechat.oauth');
+
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
@@ -23,3 +27,4 @@ Route::get('/home', 'HomeController@index');
     Route::get('token', 'JwtController@sentToken');
 // });
 Route::get('check', 'JwtController@checkToken');
+
