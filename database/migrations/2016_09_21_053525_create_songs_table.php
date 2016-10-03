@@ -15,13 +15,17 @@ class CreateSongsTable extends Migration
     {
         Schema::create('songs',function(Blueprint $table){
             $table->increments('id');
+            $table->integer('user_id');
             $table->string('name',80)->index();
-            $table->integer('uid')->index();
-            $table->boolean('done');
-            $table->boolean('deleted');
-            $table->index(['done', 'deleted']);
-            $table->integer('dial_number')->index();
-            $table->dateTime('create_time')->index();
+//            $table->integer('uid')->index();
+//            $table->boolean('done');
+//            $table->boolean('deleted');
+//            $table->index(['done', 'deleted']);
+            $table->integer('dial_times')->index();
+//            $table->dateTime('create_time')->index();
+            $table->timestamp('healed_at');
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

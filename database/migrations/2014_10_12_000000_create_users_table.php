@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('nickname', 80);
             $table->tinyInteger('sex'); // 0 => female, 1 => male.
 //            $table->string('pictures',255);
-            $table->string('headimgurl');
+            $table->string('avatar');
             $table->string('phone', 20);
 //            $table->dateTime('register_time')->index();
             $table->timestamps();

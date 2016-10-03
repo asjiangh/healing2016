@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -24,14 +24,5 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
-    }
-
-    public function userInfo()
-    {
-        $user = session('wechat.oauth_user');
-//        $user = 'test';
-        var_dump($user);
-        echo '<br>/*****************************************/';
-        dd($user);
     }
 }
