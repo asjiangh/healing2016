@@ -28,8 +28,8 @@ class HomeController extends Controller
 
     public function userInfo()
     {
-//        $user = session('wechat.oauth_user');
-        $user = 'test';
+        $user = session('wechat.oauth_user');
+//        $user = 'test';
         var_dump($user);
         echo '<br>/*****************************************/';
         dd($user);
