@@ -44,8 +44,9 @@ class SongController extends Controller
     {
         $song_name = $request->get('name');
 
-        $user = JWTAuth::parseToken()->authenticate();
-        dd($user);
+        $openid = JWTAuth::parseToken()->getPayload()->get('sub');
+
+        $user = getUser($openid);
 
         $result = Song::create(['']);
     }

@@ -16,8 +16,8 @@ class OAuthAuthenticate
      * Handle an incoming request.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
-     * @param string|null              $guard
+     * @param \Closure $next
+     * @param string|null $guard
      *
      * @return mixed
      */
@@ -36,8 +36,14 @@ class OAuthAuthenticate
 
                 session(['wechat.oauth_user' => $user]);
 
-//                Redis::hmset
-
+                $user_in_redis = [
+                    'openid' => $user->id,
+                    'nickname' => $user->nickname,
+                    'sex' => $user->original->sex,
+                    'avatar' => $user->avatar,
+                    'privilege' => 0,
+                ];
+                Redis::hmset($user->id, $user_in_redis);
 
                 $isNewSession = true;
 
@@ -69,6 +75,6 @@ class OAuthAuthenticate
     {
         $queries = array_except($request->query(), ['code', 'state']);
 
-        return $request->url().(empty($queries) ? '' : '?'.http_build_query($queries));
+        return $request->url() . (empty($queries) ? '' : '?' . http_build_query($queries));
     }
 }
