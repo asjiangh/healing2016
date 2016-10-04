@@ -50,6 +50,7 @@ class JwtController extends Controller
 
     public function userInfo()
     {
+        echoTest();
         dd(session('wechat.oauth_user'));
     }
 }
