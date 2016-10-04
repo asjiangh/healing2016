@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Redis;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Facades\JWTFactory;
@@ -14,7 +15,7 @@ class JwtController extends Controller
     public function sentToken()
     {
         $openid = session('wechat.oauth_user')['id'];
-//        $openid = 'asdfasdfqwerqer';
+
         $payload = JWTFactory::sub($openid)->make();
 
         try {
@@ -43,6 +44,7 @@ class JwtController extends Controller
 
     public function checkToken()
     {
-        return view('check');
+        $user = getUserFromRedis(session('id'));
+        return view('check',compact('user'));
     }
 }

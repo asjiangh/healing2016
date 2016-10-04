@@ -46,7 +46,7 @@ class SongController extends Controller
 
         $openid = JWTAuth::parseToken()->getPayload()->get('sub');
 
-        $user = getUser($openid);
+        $user = getUserFromRedis($openid);
 
         $result = Song::create(['']);
     }

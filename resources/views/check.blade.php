@@ -8,6 +8,10 @@
     <title>Document</title>
 </head>
 <body>
+<div>
+    {{ $user }}
+</div>
+
 <script>
     var token = window.localStorage.healing2016_token;
     document.write('token:' + token)
