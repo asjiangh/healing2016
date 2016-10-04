@@ -27,3 +27,7 @@ Route::group(['middleware' => 'jwt_auth'], function () {
 //    Route::get('song/{name}', 'SongController@show');
     Route::resource('song', 'API\SongController');
 });
+
+Route::group(['prefix' => 'test'],function (){
+    Route::resource('song', 'API\SongController');
+});

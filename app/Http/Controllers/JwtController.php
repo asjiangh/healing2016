@@ -13,8 +13,22 @@ class JwtController extends Controller
 {
     public function sentToken()
     {
-         $openid = session('wechat.oauth_user')['id'];
+        $openid = session('wechat.oauth_user')['id'];
 //        $openid = 'asdfasdfqwerqer';
+        $payload = JWTFactory::sub($openid)->make();
+
+        try {
+            $token = JWTAuth::encode($payload);
+        } catch (JWTException $e) {
+            return response()->json(['error' => 'could_not_create_token'], 500);
+        }
+
+        return view('token', compact('token'));
+    }
+
+    public function testSentToken()
+    {
+        $openid = 'asdfasdfqwerqer';
 
         $payload = JWTFactory::sub($openid)->make();
 
