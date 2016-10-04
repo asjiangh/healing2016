@@ -44,7 +44,12 @@ class JwtController extends Controller
 
     public function checkToken()
     {
-        $user = getUserFromRedis(session('id'));
-        return view('check',compact('user'));
+        $user = getUserFromRedis(session('wechat.oauth_user')[id]);
+        return view('check', compact('user'));
+    }
+
+    public function userInfo()
+    {
+        dd(session('wechat.oauth_user'));
     }
 }

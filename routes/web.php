@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-// Get user info.
-Route::get('/user-info', 'HomeController@userInfo')->middleware('wechat.oauth');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -36,4 +32,6 @@ Route::get('/check', 'JwtController@checkToken');
 Route::group(['prefix' => 'test'], function () {
     Route::get('token', 'JwtController@testSentToken');
     Route::get('check', 'JwtController@checkToken');
+    // Get user info.
+    Route::get('/user-info', 'JwtController@userInfo')->middleware('wechat.oauth');
 });
