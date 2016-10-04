@@ -39,7 +39,7 @@ class OAuthAuthenticate
                 $user_in_redis = [
                     'openid' => $user->id,
                     'nickname' => $user->nickname,
-                    'sex' => $user->original->sex,
+                    'sex' => $user->original['sex'],
                     'avatar' => $user->avatar,
                     'privilege' => 0,
                 ];
