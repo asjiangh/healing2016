@@ -15,7 +15,7 @@ class CreateSongsTable extends Migration
     {
         Schema::create('songs',function(Blueprint $table){
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->index();
             $table->string('name',80)->index();
 //            $table->integer('uid')->index();
 //            $table->boolean('done');

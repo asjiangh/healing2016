@@ -19,4 +19,9 @@ class User extends Model
     {
         return $this->hasMany('App\Song');
     }
+
+    public function school()
+    {
+        return $this->belongsTo('App\School');
+    }
 }

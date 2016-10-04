@@ -28,7 +28,4 @@ Route::get('/home', 'HomeController@index');
 // });
 Route::get('check', 'JwtController@checkToken');
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');

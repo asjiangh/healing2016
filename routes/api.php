@@ -22,4 +22,8 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('test', function () {
         return 'papapa';
     });
+
+//    Route::get('song', 'SongController@index');
+//    Route::get('song/{name}', 'SongController@show');
+    Route::resource('song', 'SongController');
 });
