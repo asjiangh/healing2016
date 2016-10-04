@@ -14,7 +14,7 @@ class JwtController extends Controller
     public function sentToken()
     {
         // $openid = session('wechat.oauth_user')['id'];
-       $openid = 'asdfasdfqwerqer';
+        $openid = 'asdfasdfqwerqer';
 
         $payload = JWTFactory::sub($openid)->make();
 

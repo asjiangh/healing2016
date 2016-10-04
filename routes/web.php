@@ -17,15 +17,15 @@ Route::get('/', function () {
 
 
 // Get user info.
-Route::get('user-info', 'HomeController@userInfo')->middleware('wechat.oauth');
+Route::get('/user-info', 'HomeController@userInfo')->middleware('wechat.oauth');
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
 // Route::group(['middleware' => 'wechat.oauth'], function () {
-    Route::get('token', 'JwtController@sentToken');
+    Route::get('/token', 'JwtController@sentToken');
 // });
-Route::get('check', 'JwtController@checkToken');
+Route::get('/check', 'JwtController@checkToken');
 
 //Route::get('/home', 'HomeController@index');
