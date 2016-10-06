@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test Token</title>
     <script>
-        window.onload=function(){
-            window.frames[0].postMessage('{{ $token }}','http://repo.gayhub.cn');
+        window.onload = function () {
+            window.frames[0].postMessage('{{ $token }}', '{{ $url }}');
         }
     </script>
 </head>

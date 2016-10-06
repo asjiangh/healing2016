@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'wechat.oauth'], function () {
 
-    Route::get('/token', 'JwtController@sentToken');
+    Route::get('/token/{url}', 'JwtController@sentToken');
 
 });
 
@@ -31,6 +31,11 @@ Route::get('/check', 'JwtController@checkToken');
 
 Route::group(['prefix' => 'test'], function () {
     Route::get('token', 'JwtController@testSentToken');
+    Route::get('token/{url}', function ($url) {
+        $decode_url = urldecode(urldecode($url));
+        $base64_url = base64_decode($url);
+        return response()->json(['url' => $url, 'decode_url' => $decode_url, 'base64_decode' => $base64_url]);
+    });
     Route::get('check', 'JwtController@checkToken');
     // Get user info.
     Route::get('/user-info', 'JwtController@userInfo')->middleware('wechat.oauth');

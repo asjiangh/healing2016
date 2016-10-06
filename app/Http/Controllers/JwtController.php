@@ -11,11 +11,13 @@ use Tymon\JWTAuth\Facades\JWTFactory;
 
 class JwtController extends Controller
 {
-    public function sentToken()
+    public function sentToken($url)
     {
         $openid = session('wechat.oauth_user')['id'];
 
-        $payload = JWTFactory::sub($openid)->make();
+        $url = base64_decode($url);
+
+        $payload = JWTFactory::sub($openid)->iss($url)->make();
 
         try {
             $token = JWTAuth::encode($payload);
@@ -23,7 +25,7 @@ class JwtController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
-        return view('token', compact('token'));
+        return view('token', compact('token', 'url'));
     }
 
     public function testSentToken()
