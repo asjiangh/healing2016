@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Redis;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Facades\JWTFactory;
@@ -32,7 +33,12 @@ class JwtController extends Controller
     {
         $openid = 'asdfasdfqwerqer';
 
-        $payload = JWTFactory::sub($openid)->make();
+        $url = 'http://test.dev';
+
+        $customClaims = ['sub' => $openid, 'http' => $url];
+
+        $payload = JWTFactory::sub('abc')->make();
+        Redis::hmset('abc', $customClaims);
 
         try {
             $token = JWTAuth::encode($payload);
@@ -40,7 +46,7 @@ class JwtController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
-        return view('token', compact('token'));
+        return view('token', compact('token', 'url'));
     }
 
     public function checkToken()

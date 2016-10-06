@@ -13,6 +13,7 @@
     </script>
 </head>
 <body>
+<p>{{ $url }}</p>
 <p>Your Token:</p>
 <p>{{ $token }}</p>
 <iframe src="http://repo.gayhub.cn/core/mynode/sundoge/token.html" frameborder="0"></iframe>

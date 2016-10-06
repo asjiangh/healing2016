@@ -28,7 +28,7 @@ class JwtAuthenticate extends BaseMiddleware
 
         $openid = $this->auth->parseToken()->getPayload()->get('sub');
 
-        if (!$user = Redis::hmget($openid)) {
+        if (!$user = Redis::hgetall($openid)) {
             return false;
         }
 
