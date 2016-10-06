@@ -12,7 +12,7 @@ use Tymon\JWTAuth\Facades\JWTFactory;
 
 class JwtController extends Controller
 {
-    public function sentToken($url)
+    public function sentToken($url = 'aHR0cDovL3JlcG8uZ2F5aHViLmNu')
     {
         $openid = session('wechat.oauth_user')['id'];
 
