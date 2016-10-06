@@ -18,7 +18,7 @@ Route::get('/user', function (Request $request) {
     return array_map('trim', explode(',', env('WECHAT_OAUTH_SCOPES', 'snsapi_userinfo')));
 })->middleware('api');
 
-Route::group(['middleware' => 'jwt_auth'], function () {
+Route::group(['middleware' => ['cors', 'jwt_auth']], function () {
     Route::get('test', function () {
         return 'papapa';
     });
@@ -28,6 +28,6 @@ Route::group(['middleware' => 'jwt_auth'], function () {
     Route::resource('song', 'API\SongController');
 });
 
-Route::group(['prefix' => 'test'],function (){
+Route::group(['prefix' => 'test'], function () {
     Route::resource('song', 'API\SongController');
 });
