@@ -18,7 +18,7 @@ class JwtController extends Controller
 
         $url = base64_decode($url);
 
-        $payload = JWTFactory::sub($openid)->iss($url)->make();
+        $payload = JWTFactory::sub($openid)->make();
 
         try {
             $token = JWTAuth::encode($payload);
