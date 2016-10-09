@@ -24,6 +24,7 @@ class CreateSongsTable extends Migration
             $table->integer('dial_times')->index();
 //            $table->dateTime('create_time')->index();
             $table->timestamp('healed_at');
+            $table->json('info');
             $table->softDeletes();
             $table->timestamps();
         });

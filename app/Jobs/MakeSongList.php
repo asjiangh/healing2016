@@ -9,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Redis;
 
-class SongList implements ShouldQueue
+class MakeSongList implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
@@ -22,7 +22,7 @@ class SongList implements ShouldQueue
      */
     public function __construct()
     {
-        $this->total = config('song.songs_per_page') * config('song.prediction');
+        $this->total = config('song.songs_per_list');
     }
 
     /**
@@ -45,6 +45,7 @@ class SongList implements ShouldQueue
             ->get()
             ->toArray();
 
+        dd($list);
         $this->updateOffset();
 
         shuffle($list);
