@@ -23,6 +23,9 @@ Route::group(['middleware' => ['cors', 'jwt_auth']], function () {
         return 'papapa';
     });
 
+    // 获取jssdk的config，data为type
+    Route::post('/wechat/config', 'WechatController@getConfig');
+
 //    Route::get('song', 'SongController@index');
 //    Route::get('song/{name}', 'SongController@show');
     Route::resource('song', 'API\SongController');

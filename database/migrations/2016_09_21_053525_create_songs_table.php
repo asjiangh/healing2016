@@ -13,18 +13,18 @@ class CreateSongsTable extends Migration
      */
     public function up()
     {
-        Schema::create('songs',function(Blueprint $table){
+        Schema::create('songs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
-            $table->string('name',80)->index();
+            $table->string('name', 80)->index();
 //            $table->integer('uid')->index();
 //            $table->boolean('done');
 //            $table->boolean('deleted');
 //            $table->index(['done', 'deleted']);
-            $table->integer('dial_times')->index();
+            $table->integer('dialed_times');
 //            $table->dateTime('create_time')->index();
-            $table->timestamp('healed_at');
-            $table->json('info');
+            $table->json('meta');
+            $table->timestamp('healed_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

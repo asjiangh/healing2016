@@ -24,4 +24,23 @@ class Song extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag','song_tag');
+    }
+
+    public function syncTags(array $tags)
+    {
+        Tag::addNeededTags($tags);
+
+        if (count($tags)) {
+            $this->tags()->sync(
+                Tag::whereIn('tag', $tags)->pluck('id')->all()
+            );
+            return;
+        }
+
+        $this->tags()->detach();
+    }
 }
